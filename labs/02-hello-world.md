@@ -8,7 +8,7 @@ You can compare Apache httpd and PHP stack or Tomcat and Java to Node when doing
 
 * Have Hello World HTTP web server written in Node working and accessible to entire world via public AWS DNS.
 
-# Walk-Through
+# Walk-through
 
 If you would like to attempt the task, go skip the walk-through and for the task directly. However, if you need a little bit more hand holding or you would like to look up some of the commands or code or settings, then follow the walk-through.
 
@@ -96,10 +96,35 @@ curl PUBLIC_URL:3000
 ```
 
 
-## 3. Test Startup
+## 3. Test app restart
 
 Now you need to test if the Node servers will be run on the startup coming from a stop or reboot. Go to web console and stop the instance.
 
-Wait a few moment and see that Hello World is inaccesible from the public URL plus port number.
+Wait a few moment and see that Hello World is inaccessible from the public URL plus port number.
 
-Start the same instance again and copy the new public URL. Add port 3000 and navigate to the address.
+Start the same instance again and copy the new public URL. Add port 3000 and navigate to the address. Make sure you can see Hello World again.
+
+More over, SSH to the EC2 instance and find the node process by
+
+```
+ps aux | grep node
+```
+
+You might see something like this:
+
+```
+[ec2-user@ip-172-31-2-188 ~]$ ps aux | grep 'node'
+root      2668  1.8  2.6 909804 27416 ?        Sl   03:52   0:00 node /home/ec2-user/hello-world-server.js
+ec2-user  2681  0.0  0.2 110460  2188 pts/0    S+   03:52   0:00 grep --color=auto node
+```
+
+Terminate it with `kill -9 {PROCESS_ID}`, for example:
+
+```
+sudo kill -9 2668 
+```
+
+Go to the web service and verify that you still see the message. That's because pm2 restarted the app. If you run `ps` again, then you'll see a different process ID.
+
+You enabled restart not only on the instance reboot but also on the process failure which could happen due to memory leaks, bugs or attacks.
+

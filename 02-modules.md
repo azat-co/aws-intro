@@ -448,84 +448,59 @@ curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
 yum -y install nodejs
 npm i -g pm2@2.4.3
 echo "const port = 3000
-require('http')
-  .createServer((req, res) => {
-    console.log('url:', req.url)
-    res.end('hello world')
-  })
-  .listen(port, (error)=>{
-    console.log(`server is running on ${port}`)
-  })
+...
 " >> /home/ec2-user/hello-world-server.js
-crontab -l | { cat; echo "@reboot pm2 start /home/ec2-user/hello-world-server.js -i 0 --name \"node-app\""; } | crontab -
+```
+
+---
+
+# How to Restart the app on reboot?
+
+* Crontab @reboot
+* /etc/rc.d/rc.local
+* chkconfig
+* Upstart
+
+---
+
+# Restarting with crontab
+
+```js
+...
+crontab -l | { cat; \
+  echo "@reboot pm2 start /home/ec2-user/hello-world-server.js \
+    -i 0 --name \"node-app\""; } \
+  | crontab -
 sudo reboot
 ```
 
 ---
 
-rc.d: (works but has two versions of pm2 - one in /etc/.pm2 and another in ec2-user)
+# Restarting with rc.d/rc.local
+
+```bash
+#!/bin/bash
+...
+sudo sed -i '$i export PATH=$PATH:/.nvm/versions/node/v6.7.0/bin' \
+  /home/ec2-user/.bashrc
+sudo sed -i '$i . /.nvm/nvm.sh' /etc/rc.d/rc.local
+sudo sed -i '$i pm2 start /home/ec2-user/hello-world-server.js -i \
+  0 --name \"node-app\"' /etc/rc.d/rc.local
+sudo reboot
+```
+
+---
+
+
+Another way to install Node (via nvm):
 
 ```bash
 #!/bin/bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
 . /.nvm/nvm.sh
 sudo sed -i '$i export NVM_DIR="$HOME/.nvm"' /home/ec2-user/.bashrc
-sudo sed -i '$i [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' /home/ec2-user/.bashrc
+sudo sed -i '$i [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" ' /home/ec2-user/.bashrc
 nvm install 6.7
-echo "const port = 3000
-require('http')
-  .createServer((req, res) => {
-    console.log('url:', req.url)
-    res.end('hello world')
-  })
-  .listen(port, (error)=>{
-    console.log(`server is running on ${port}`)
-  })
-" >> /home/ec2-user/hello-world-server.js
-npm i -g pm2@2.4.3
-sudo sed -i '$i export PATH=$PATH:/.nvm/versions/node/v6.7.0/bin' /home/ec2-user/.bashrc
-sudo sed -i '$i . /.nvm/nvm.sh' /etc/rc.d/rc.local
-sudo sed -i '$i pm2 start /home/ec2-user/hello-world-server.js -i 0 --name \"node-app\"' /etc/rc.d/rc.local
-sudo reboot
-```
-
-```
-#!/bin/bash
-. /.nvm/nvm.sh
-pm2 start /home/ec2-user/hello-world-server.js -i 0 --name "node-app"
-```
-
-sudo adduser node
-sudo su - ec2-user
-
-```bash
-#!/bin/bash
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
-. /.nvm/nvm.sh
-sudo sed -i '$i export NVM_DIR="$HOME/.nvm"' /home/ec2-user/.bashrc
-sudo sed -i '$i [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' /home/ec2-user/.bashrc
-nvm install 6.7
-echo "const port = 3000
-require('http')
-  .createServer((req, res) => {
-    console.log('url:', req.url)
-    res.end('hello world')
-  })
-  .listen(port, (error)=>{
-    console.log(`server is running on ${port}`)
-  })
-" >> /home/ec2-user/hello-world-server.js
-npm i -g pm2@2.4.3
-#pm2 start /home/ec2-user/hello-world-server.js
-#pm2 save
-#pm2 startup
-sudo sed -i '$i export PATH=$PATH:/.nvm/versions/node/v6.7.0/bin' /home/ec2-user/.bashrc
-sudo sed -i '$i . /.nvm/nvm.sh' /etc/rc.d/rc.local
-sudo sed -i '$i pm2 start /home/ec2-user/hello-world-server.js -i 0 --name \"node-app\"' /etc/rc.d/rc.local
-sudo reboot
-
-sudo env PATH=$PATH:/.nvm/versions/node/v6.7.0/bin /.nvm/versions/node/v6.7.0/lib/node_modules/pm2/bin/pm2 startup systemv -u ec2-user --hp /home/ec2-user
-sudo reboot
 ```
 
 ---
