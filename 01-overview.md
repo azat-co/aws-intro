@@ -139,6 +139,7 @@ Multitasking does NOT work [^1]
 ## Module 6: Networking
 
 * VPC
+* Interface
 * Subnets
 * ELB
 * Elastic IP

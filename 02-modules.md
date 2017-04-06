@@ -295,7 +295,7 @@ Task: Create an instance with WordPress, make the website visible in the browser
 
 Detailed instruction in labs/lab-01.md
 
-10 min
+Time to finish: 10 min
 
 ---
 
@@ -415,6 +415,10 @@ runcmd:
 For trouble shooting, cloud init logs are in `/var/log/cloud-init-output.log`.
 
 More docs: http://cloudinit.readthedocs.io/en/latest/index.html
+
+---
+
+# ❓ Questions? ❓
 
 ---
 
@@ -550,12 +554,154 @@ Time:20 min
 
 # ❓ Questions? ❓
 
-## Module 4: Auto Scaling
+---
 
-* Alerts and CloudWatch
-* Demo: Create a launch config, auto scaling group and policy to increase instances
-* Demo: Create a launch configuration, autoscaling group and see if it works
-* Lab 3: Deploy 2 Node apps under ELB, load test it to see if autoscaling works
+# Module 4: Auto Scaling
+
+---
+
+# CloudWatch
+
+---
+
+![inline](images/CW-Overview.png)
+
+---
+
+# CloudWatch Use Cases
+
+* Get alert when your bill exceeds $200/mo
+* Shutdown under used machines
+* Auto scale (up) machines under heavy load
+* Log API calls (CloudTail)
+* When EBS exceeds 100Mb throughput threshold
+
+---
+
+# Alerts
+
+* Watch a single metric from 1,068 CloudWatch metrics available in the US West (N. California) region (as an example)
+* Send actions to SNS or Auto Scaling
+* Periods of 1min, 5min, 15min, etc.
+* You can create up to 5000 alarms per region per AWS account.
+
+---
+
+# Alerts Types
+
+* ALARM: Data for the metric is outside the threshold
+* INSUFFICIENT_DATA: No data or not enough or too early
+* OK: Data for the metric is within the threshold
+
+---
+
+# ❓ Questions? ❓
+
+---
+
+# Demo 💻
+
+Create a launch configuration with 1 initial Node app, autoscaling group, policy to increase instances and see if autoscaling works
+
+---
+
+# ❓ Questions? ❓
+
+---
+
+# Lab 3: Pager Duty
+
+Task: Deploy 2 Node apps under ELB, load test it to see if autoscaling works
+
+Detailed instruction in labs/03-pager-duty.md
+
+Time to finish: 20 min
+
+---
+
+# ❓ Questions? ❓
+
+---
+
+## Module 6: Networking
+
+---
+
+## Problem: EC2 Instances are publicly accessible... but most of the time you don't need it... what to do?
+
+---
+
+# VPC
+
+---
+
+# What is VPC
+
+VPC is a virtual network which is logically isolated from other virtual networks and dedicated to your AWS account.
+
+---
+
+
+# Benefits of VPC
+
+* Security by controlling traffic to/from
+* Application performance
+* Bandwidth efficiency
+* Keep your private IP for EC2 on restart
+
+---
+
+# What VPC can do
+
+![left 90%](images/vpc-diagram.png)
+
+* Spans all AZ in region
+* Connect to corporate or home networks
+* Create subnets which are limited to an AZ
+
+---
+
+# Subnets
+
+---
+
+[.hide-footer]
+
+[.autoscale: true]
+
+![left 95%](images/subnets-diagram.png)
+
+* 1A, 1B, 2A, and 3A are instances in the VPC.
+* Subnet 1 is a public subnet (route to the Internet gateway)
+* Subnet 2 is a private subnet (no route to the Internet gateway)
+* Subnet 3 is a VPN-only subnet (route to a virtual private gateway)
+* An Internet gateway enables communication over the Internet
+* A virtual private network (VPN) connection enables communication with your corporate network
+
+---
+
+
+# Interface
+
+---
+
+# ELB
+
+---
+
+# Elastic IP
+
+---
+
+# Demo
+
+Create ELB and 2 EC2 instances with Apache httpd, make one fail - see the other running
+
+---
+
+# Lab 4: Create ELB and 2 EC2 instances with Apache httpd
+
+---
 
 
 ---

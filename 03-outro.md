@@ -11,6 +11,8 @@ Azat Mardan @azat_co
 
 ---
 
+# AWS official resources
 
+* [Documentation](https://aws.amazon.com/documentation)
 * [YouTube channel](https://www.youtube.com/channel/UCd6MoB9NC6uYN2grvUNT-Zg)
 * [Week in Review](https://aws.amazon.com/blogs/aws/category/week-in-review)
