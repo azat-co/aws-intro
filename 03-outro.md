@@ -45,25 +45,33 @@ Azat Mardan @azat_co
 
 ---
 
-
-
 # AWS Books
+
+
+---
+
+
 
 ![left 100%](images/aws-in-action.jpg)
 
-[Amazon Web Services in Action](http://amzn.to/2o20OGf)
+## [Amazon Web Services in Action](http://amzn.to/2o20OGf)
 
 ---
 
+![right fit](images/aws-kindle.png)
 
+## [FREE AWS ebook and whitepapers](http://amzn.to/2nIpQIP)
 
-# AWS Books
+---
 
 ![left 100%](images/everything-store.jpg)
 
-[The Everything Store: Jeff Bezos and the Age of Amazon ](http://amzn.to/2nhx4YI)
+## [The Everything Store: Jeff Bezos and the Age of Amazon ](http://amzn.to/2nhx4YI)
 
 ---
+
+
+
 
 # AWS Events
 
