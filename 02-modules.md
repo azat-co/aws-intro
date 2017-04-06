@@ -794,10 +794,17 @@ EIP - static IP; uses IP (A record); specific region only, limited to 5 per regi
 
 ---
 
+# ❓ Questions? ❓
+
+---
 
 # Demo
 
 Create ELB and 2 EC2 instances with Apache httpd, make one fail - see the other running
+
+---
+
+# ❓ Questions? ❓
 
 ---
 
@@ -808,6 +815,10 @@ Task: Create an app ELB with 2 targets which are Apache httpd servers in differe
 Detailed instruction in labs/lab-04.md
 
 Time to finish: 15 min
+
+---
+
+# ❓ Questions? ❓
 
 ---
 
@@ -837,6 +848,10 @@ Upload an object to S3 bucket via web console
 
 ---
 
+# ❓ Questions? ❓
+
+---
+
 # Lab 5: Static Websites Rule!
 
 Task: Server an HTML page from S3
@@ -844,6 +859,10 @@ Task: Server an HTML page from S3
 Detailed instruction in labs/lab-05.md
 
 Time to finish: 10 min
+
+---
+
+# ❓ Questions? ❓
 
 ---
 
