@@ -1,11 +1,21 @@
 # Lab 2: Hello World Baby
 
+1. Create a launch configuration with 1 Node app with user data to start an HTTP server (config from lab 2)
+1. Create an autoscaling group
+1. Create an autoscaling policy to increase instances by 1 when CPU load is > 15% for 1 min
+1. Load test it with loadtest npm module to see a new instance is created
+1. Remove autoscaling group
+1. Terminate instances
 
 
 ```
 npm i -g loadtest
 loadtest -c 100 -rps {PUBLIC_URL}
 ```
+
+https://aws.amazon.com/documentation/cloudwatch/
+
+
 
 Node is a fast performing non-blocking I/O JavaScript run-time platform which is mostly used for web servers, API and microservices because of it's small footprint, and interpreted nature. Node allows developers to port and share the front-end code *to the server* easily.
 
@@ -94,7 +104,7 @@ Leave screens 3 and 4 with default settings. Add tag named role with value "aws-
 
 ## 2. Test website
 
-Copy the public URL for the newly created EC2 instance. Paste it in the browser and **add :3000* to navigate to port 3000. You'll see the Hello World.
+Copy the public URL for the newly created EC2 instance. Paste it in the browser and **add :3000** to navigate to port 3000. You'll see the Hello World.
 
 Alternatively, execute curl from your developer machine:
 

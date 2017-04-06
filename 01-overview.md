@@ -136,7 +136,7 @@ Multitasking does NOT work [^1]
 
 ---
 
-## Module 6: Networking
+## Module 5: Networking
 
 * VPC
 * Interface
@@ -148,31 +148,15 @@ Multitasking does NOT work [^1]
 
 ---
 
-## Module 7: RDS
 
-* Creating a database instance
-* IAM Role
-* Demo: Connecting to the database from EC2
-* Lab 5: Launch an EC2 and RDS instances and connect from Node code of EC2 to RDS
-
----
-
-## Module 8: Serverless
-
-* AWS Lambda
-* Demo: Building Microservice with Lambda and API Gateway
-* Lab 6: Create a microservice to save data in DB
-
----
-
-## Module 9: S3
+## Module 6: S3
 
 * Buckets
 * HTTP access
 * IAM Roles
 * Versioning and multi-region
 * Demo: Upload an object to S3 bucket via web console
-* Lab 7: Server an HTML page from S3
+* Lab 5: Server an HTML page from S3
 
 ---
 
@@ -182,3 +166,21 @@ Multitasking does NOT work [^1]
 * AWS Certifications
 * AWS Books
 * AWS Courses
+
+
+## Module x: RDS
+
+* Creating a database instance
+* IAM Role
+* Demo: Connecting to the database from EC2
+* Lab 5: Launch an EC2 and RDS instances and connect from Node code of EC2 to RDS
+
+---
+
+## Module x: Serverless
+
+* AWS Lambda
+* Demo: Building Microservice with Lambda and API Gateway
+* Lab 6: Create a microservice to save data in DB
+
+---

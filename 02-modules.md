@@ -52,6 +52,17 @@ Yell out loud the benefits! 🔊
 
 # Billing and calculator
 
+* [SIMPLE MONTHLY CALCULATOR](https://calculator.s3.amazonaws.com/index.html)
+* [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing/on-demand)
+* [Amazon S3 Pricing](https://aws.amazon.com/s3/pricing)
+
+
+---
+
+# Billing Management console
+
+![inline](images/billing-console.png)
+
 ---
 
 # What you need or lab 0
@@ -683,9 +694,74 @@ VPC is a virtual network which is logically isolated from other virtual networks
 
 # Interface
 
+
+An elastic network interface (or network interface or just interface) is a virtual network interface that you can attach to an instance in a VPC.[^1] You can associate multiple instances with one interface.
+
+[^1]: <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html>
+
+---
+
+![inline](images/EC2_ENI_management_network.png)
+
 ---
 
 # ELB
+
+---
+
+# Benefits
+
+* Monitors health
+* Routes to multiple AZs (fault toulerance)
+* Sticky sessions (cookies)
+* CloudWatch metrics
+* More [here](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html#elb-features)
+
+---
+
+
+# Classic Load Balancer	vs. Application Load Balancer
+
+Classic Load Balancer — register **instances** with the load balancer.
+
+Application Load Balancer — register the instances as **targets in a target group**, and route traffic to a target group.
+
+---
+
+# Application Load Balancer over Classic LB
+
+* Cross-zone load balancing always enabled
+* Host-based routing and Path-based routing (microservices)
+* Route to multiple ports on a single instance (containers)
+* HTTP/2 support (security)
+* Websockets support
+* Load balancer deletion protection
+
+---
+
+# Application LB
+
+![inline](images/component_architecture.png)
+
+---
+
+# LB Scheme
+
+* Internal
+* Internet-facing
+
+Note: *Internet-facing and internal load balancers route requests to your instances using private IP addresses. Hence, instances do not need public IP addresses to receive traffic from load balancers.*
+
+---
+
+# How ELB Works: Two Points of Elasticity
+
+1. Client look ups DNS (azat.co) which by CNAME resolves to xxxx.us-west-1.elb.amazonaws.com
+1. AWS gives ELB's IP - point 1
+1. Client connects to ELB's IP
+1. ELB passes traffic to one of the instances - point 2
+
+^It's important to use DNS for your ELB not IP because IP of ELB can change and you want to have 2 points of elasticity. Number 2 is easy to implement but number 1 is harder. https://shlomoswidler.com/2009/07/elastic-in-elastic-load-balancing-elb.html and http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html
 
 ---
 
@@ -693,15 +769,118 @@ VPC is a virtual network which is logically isolated from other virtual networks
 
 ---
 
+# Benefits of EIP
+
+* Static *public* IPv4 (currently no IPv6) for DNS and sending emails (anti-spam)
+* Can associate with instance or network interface (many instances)
+* The ability to remap the address to another instance in the case of instance failure
+
+---
+
+# EIP
+
+* Limited to 5 per account per region
+* When associate instance with EIP, it loses it's previous public IP (if it had one)
+* Elastic IP address remains allocated until explicitly released
+
+---
+
+# Elastic IP vs ELB
+
+ELB - more scalable and reliable (no single IP - see 2 points of elasticity); health checks; uses DNS (CNAME record), limited to 20 per region; cross-AZ.
+
+
+EIP - static IP; uses IP (A record); specific region only, limited to 5 per region; one AZ.
+
+---
+
+
 # Demo
 
 Create ELB and 2 EC2 instances with Apache httpd, make one fail - see the other running
 
 ---
 
-# Lab 4: Create ELB and 2 EC2 instances with Apache httpd
+# Lab 4: ELB for Saving!
+
+Task: Create an app ELB with 2 targets which are Apache httpd servers in different AZs, make one fail and observe
+
+Detailed instruction in labs/lab-04.md
+
+Time to finish: 15 min
 
 ---
 
+## Module 7: S3
+
+---
+
+# Buckets
+
+---
+
+# HTTP access
+
+---
+
+# IAM Roles
+
+---
+
+# Versioning and multi-region
+
+---
+
+# Demo 💻
+
+Upload an object to S3 bucket via web console
+
+---
+
+# Lab 5: Static Websites Rule!
+
+Task: Server an HTML page from S3
+
+Detailed instruction in labs/lab-05.md
+
+Time to finish: 10 min
+
+---
+
+# Summary
+
+---
+
+## Topics covered
+
+* Cloud and AWS Basics
+* Launching EC2
+* Environment and App Deploy Automation
+* Auto Scaling
+* Module 5: Networking
+* S3
+
+
+---
+
+## Labs covered
+
+1. WP is King
+1. Hello world Baby (User Data)
+1. Pager Duty (Autoscaling)
+1. ELB for Saving!
+1. Static Websites Rule! (S3)
+
+---
+
+# Further Study :
+
+
+---
+
+* AWS Events
+* AWS Certifications
+* AWS Books
+* AWS Courses
 
 ---
