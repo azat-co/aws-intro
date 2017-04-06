@@ -14,7 +14,7 @@ If you would like to attempt the task, go skip the walk-through and for the task
 
 Log in to the web console and navigate to the EC2 dashboard. Select "Launch instance" to start the wizard. On the first screen of the instance wizard, find in Marketplace and select the image which has free WordPress installation already built in. We recommend using *"WordPress powered by Bitnami"* because it's a free software image. Developers pay only for the AWS EC2 service.
 
-On the next screen *Choose an instance type*, select "t2.micro" (Free tier eligible). Leave screens 3 and 4 with defaul settings. Add tag named role with value "aws-course" on screen 5. Configure security group to have these ports open:
+On the next screen *Choose an instance type*, select "t2.micro" (Free tier eligible). Leave screens 3 and 4 with default settings. Add tag named role with value "aws-course" on screen 5. Configure security group to have these ports open:
 
 * HTTP 80
 * HTTPS 443
@@ -52,6 +52,8 @@ Alternatively, you can look up the password from the EC2 web console. Navigate t
 1. From the left sidebar navigation menu, select the "Instances -> Instances"
 1. Locate your newly created WordPress instance and select it with the blue square.
 1. From the "Actions" drop-down menu, select the "Instance Settings" | "Get System Log" option as shown below.
+
+If you need more info, check out [this page](https://docs.bitnami.com/aws/faq/#how-to-find-application-credentials).
 
 ![](../images/wp-app-credentials.png)
 

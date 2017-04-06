@@ -333,9 +333,88 @@ Note: There are many other solutions for environment and app built, test and dep
 
 ## Demo: User Data for Apache httpd and HTML page
 
+```bash
+#!/bin/bash
+yum install -y httpd
+service httpd start
+echo "Hello World!" > /var/www/index.html
 ```
 
+---
+
+## Demo: User Data for Apache httpd, PHP and PHP code
+
+```bash
+#!/bin/bash
+yum update -y
+yum install -y httpd24 php56 mysql55-server php56-mysqlnd
+service httpd start
+chkconfig httpd on
+groupadd www
+usermod -a -G www ec2-user
+chown -R root:www /var/www
+chmod 2775 /var/www
+find /var/www -type d -exec chmod 2775 {} +
+find /var/www -type f -exec chmod 0664 {} +
+echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php
+echo "<?php echo 'Hello World!' ?>" > /var/www/html/index.php
 ```
+
+---
+
+## Testing Apache httpd, PHP and Hello World
+
+<http://PUBLIC_URL/> or <http://PUBLIC_URL/index.php>
+<http://PUBLIC_URL/phpinfo.php>
+
+Note: Never leave phpinfo in production because attackers can use the system info against the system!
+
+---
+
+
+## Cloud Init
+
+Same Apache httpd, PHP and phpinfo config in User Data but with cloud-init instead of bash:
+
+```
+#cloud-config
+repo_update: true
+repo_upgrade: all
+
+packages:
+ - httpd24
+ - php56
+ - mysql55-server
+ - php56-mysqlnd
+```
+
+---
+
+## Cloud Init (cont)
+
+Same Apache httpd, PHP and phpinfo config in User Data but with cloud-init instead of bash:
+
+
+```
+runcmd:
+ - service httpd start
+ - chkconfig httpd on
+ - groupadd www
+ - [ sh, -c, "usermod -a -G www ec2-user" ]
+ - [ sh, -c, "chown -R root:www /var/www" ]
+ - chmod 2775 /var/www
+ - [ find, /var/www, -type, d, -exec, chmod, 2775, {}, + ]
+ - [ find, /var/www, -type, f, -exec, chmod, 0664, {}, + ]
+ - [ sh, -c, 'echo "<?php phpinfo(); ?>" > /var/www/html/phpinfo.php' ]
+```
+
+---
+
+# Cloud Init (cont)
+
+For trouble shooting, cloud init logs are in `/var/log/cloud-init-output.log`.
+
+More docs: http://cloudinit.readthedocs.io/en/latest/index.html
 
 ---
 
@@ -358,13 +437,40 @@ require('http')
 
 ---
 
+# User Data Bash for Node app with pm2 (Amazon Linux Example)
 
+---
+
+```bash
+#!/bin/bash -ex
+exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
+curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+yum -y install nodejs
+npm i -g pm2@2.4.3
+echo "const port = 3000
+require('http')
+  .createServer((req, res) => {
+    console.log('url:', req.url)
+    res.end('hello world')
+  })
+  .listen(port, (error)=>{
+    console.log(`server is running on ${port}`)
+  })
+" >> /home/ec2-user/hello-world-server.js
+crontab -l | { cat; echo "@reboot pm2 start /home/ec2-user/hello-world-server.js -i 0 --name \"node-app\""; } | crontab -
+sudo reboot
 ```
+
+---
+
+rc.d: (works but has two versions of pm2 - one in /etc/.pm2 and another in ec2-user)
+
+```bash
 #!/bin/bash
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
-. ~/.nvm/nvm.sh
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+. /.nvm/nvm.sh
+sudo sed -i '$i export NVM_DIR="$HOME/.nvm"' /home/ec2-user/.bashrc
+sudo sed -i '$i [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' /home/ec2-user/.bashrc
 nvm install 6.7
 echo "const port = 3000
 require('http')
@@ -375,21 +481,80 @@ require('http')
   .listen(port, (error)=>{
     console.log(`server is running on ${port}`)
   })
-" >> hello-world-server.js
+" >> /home/ec2-user/hello-world-server.js
 npm i -g pm2@2.4.3
-pm2 start ./hello-world-server.js -i 0 --name "node-app"
-sudo pm2 startup
-sudo pm2 save
+sudo sed -i '$i export PATH=$PATH:/.nvm/versions/node/v6.7.0/bin' /home/ec2-user/.bashrc
+sudo sed -i '$i . /.nvm/nvm.sh' /etc/rc.d/rc.local
+sudo sed -i '$i pm2 start /home/ec2-user/hello-world-server.js -i 0 --name \"node-app\"' /etc/rc.d/rc.local
+sudo reboot
+```
+
+```
+#!/bin/bash
+. /.nvm/nvm.sh
+pm2 start /home/ec2-user/hello-world-server.js -i 0 --name "node-app"
+```
+
+sudo adduser node
+sudo su - ec2-user
+
+```bash
+#!/bin/bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
+. /.nvm/nvm.sh
+sudo sed -i '$i export NVM_DIR="$HOME/.nvm"' /home/ec2-user/.bashrc
+sudo sed -i '$i [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' /home/ec2-user/.bashrc
+nvm install 6.7
+echo "const port = 3000
+require('http')
+  .createServer((req, res) => {
+    console.log('url:', req.url)
+    res.end('hello world')
+  })
+  .listen(port, (error)=>{
+    console.log(`server is running on ${port}`)
+  })
+" >> /home/ec2-user/hello-world-server.js
+npm i -g pm2@2.4.3
+#pm2 start /home/ec2-user/hello-world-server.js
+#pm2 save
+#pm2 startup
+sudo sed -i '$i export PATH=$PATH:/.nvm/versions/node/v6.7.0/bin' /home/ec2-user/.bashrc
+sudo sed -i '$i . /.nvm/nvm.sh' /etc/rc.d/rc.local
+sudo sed -i '$i pm2 start /home/ec2-user/hello-world-server.js -i 0 --name \"node-app\"' /etc/rc.d/rc.local
+sudo reboot
+
+sudo env PATH=$PATH:/.nvm/versions/node/v6.7.0/bin /.nvm/versions/node/v6.7.0/lib/node_modules/pm2/bin/pm2 startup systemv -u ec2-user --hp /home/ec2-user
+sudo reboot
 ```
 
 ---
 
-## Demo: Pulling code from S3, and GitHub
+## Pulling code from S3 (Amazon Linux Example)
 
+
+```bash
+#!/bin/bash
+yum install -y aws-cli
+cd /home/ec2-user/
+aws s3 cp 's3://{my-private-bucket}/{app-folder}/lastest.zip' /var/app \
+  --region {bucket_region} # requires IAM role to access S3
+# unzip and launch
 ```
 
+Note: *AWS CLI covered in the AWS Intermediate course*
+
+---
+
+## Pulling code from private GitHub repository (Amazon Linux Example)
+
+```bash
+#!/bin/bash
+yum install -y git-all
+git clone https://username:password@github.com/{username}/{private_repository}.git
 ```
 
+Note: *You can also use SSH (private key on EC2 and public on GitHub)*
 
 ---
 

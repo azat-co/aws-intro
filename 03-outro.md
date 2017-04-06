@@ -10,3 +10,7 @@ Azat Mardan @azat_co
 ![inline right](images/nu.png)
 
 ---
+
+
+* [YouTube channel](https://www.youtube.com/channel/UCd6MoB9NC6uYN2grvUNT-Zg)
+* [Week in Review](https://aws.amazon.com/blogs/aws/category/week-in-review)
