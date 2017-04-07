@@ -50,6 +50,24 @@ Yell out loud the benefits! 🔊
 
 ---
 
+# More, much more other services
+
+* AI
+* Big Data
+* Notifications
+* Deploy, CI/CD
+* Mobile, IoT
+
+---
+
+# Move Exabyte-Scale Data Sets with AWS Snowmobile
+
+---
+
+![](https://www.youtube.com/watch?v=8vQmTZTq7nw)
+
+---
+
 # Billing and calculator
 
 * [SIMPLE MONTHLY CALCULATOR](https://calculator.s3.amazonaws.com/index.html)
