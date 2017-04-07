@@ -1,4 +1,4 @@
-# Lab 2: Hello World Baby
+# Lab 3: Pager Duty
 
 1. Create a launch configuration with 1 Node app with user data to start an HTTP server (config from lab 2)
 1. Create an autoscaling group
@@ -17,9 +17,9 @@ https://aws.amazon.com/documentation/cloudwatch/
 
 
 
-Node is a fast performing non-blocking I/O JavaScript run-time platform which is mostly used for web servers, API and microservices because of it's small footprint, and interpreted nature. Node allows developers to port and share the front-end code *to the server* easily.
+In startups and medium-size companies it's not uncommon for software engineers to serve pager duty. That's partially because there's very little dedicated IT Ops resources and partially because pager duty might make engineers to be more responsible and *feel* the pain of their bugs.
 
-You can compare Apache httpd and PHP stack or Tomcat and Java to Node when doing this simple Hello World deployment.
+Luckily, since your tech stack is built on AWS, you can take advantage of the automation with launch configurations and autoscaling groups. You can monitors any spikes in traffic or any other metric like failures, CPU load or not having enough disk space and then scale up or down accordingly.
 
 # Task
 
