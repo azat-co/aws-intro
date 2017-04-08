@@ -1,17 +1,7 @@
-# AWS Intermediate Courseware
+# AWS Intro Course
 
-* https://atom.io/
-* https://code.visualstudio.com/
-* https://git-scm.com/
-* https://aws.amazon.com/cli/
-* https://pypi.python.org/pypi/pip
-* https://nodejs.org/en/
-* https://aws.amazon.com/
-* https://www.docker.com/
+* Labs: labs
+* Slides: 01-overview.md, 02-modules.md, 03-outro.md
+* Code: code
 
-Resources
-
-* https://aws.amazon.com/new/reinvent/
-* https://www.manning.com/books/amazon-web-services-in-action
-* https://cloudacademy.com/
-* https://node.university
+© NodeProgram.com, Node.University and Azat Mardan 2017

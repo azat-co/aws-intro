@@ -23,10 +23,9 @@ Azat Mardan @azat_co
 * Cloud and AWS Basics
 * Launching EC2
 * Environment and App Deploy Automation
-* Auto Scaling
-* Module 5: Networking
+* Networking
 * S3
-
+* Auto Scaling
 
 ---
 
@@ -34,9 +33,9 @@ Azat Mardan @azat_co
 
 1. WP is King
 1. Hello world Baby (User Data)
-1. Pager Duty (Autoscaling)
 1. ELB for Saving!
 1. Static Websites Rule! (S3)
+1. Pager Duty (Autoscaling)
 
 ---
 
