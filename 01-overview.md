@@ -166,21 +166,3 @@ Multitasking does NOT work [^1]
 * AWS Certifications
 * AWS Books
 * AWS Courses
-
-
-## Module x: RDS
-
-* Creating a database instance
-* IAM Role
-* Demo: Connecting to the database from EC2
-* Lab 5: Launch an EC2 and RDS instances and connect from Node code of EC2 to RDS
-
----
-
-## Module x: Serverless
-
-* AWS Lambda
-* Demo: Building Microservice with Lambda and API Gateway
-* Lab 6: Create a microservice to save data in DB
-
----
