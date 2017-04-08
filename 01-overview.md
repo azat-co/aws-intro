@@ -127,16 +127,7 @@ Multitasking does NOT work [^1]
 
 ---
 
-## Module 4: Auto Scaling
-
-* Alerts and CloudWatch
-* Demo: Create a launch config, auto scaling group and policy to increase instances
-* Demo: Create launch configuration, autoscaling group and see if it works
-* Lab 3: Deploy 2 Node apps under ELB, load test it to see if autoscaling works
-
----
-
-## Module 5: Networking
+## Module 4: Networking
 
 * VPC
 * Interface
@@ -144,19 +135,28 @@ Multitasking does NOT work [^1]
 * ELB
 * Elastic IP
 * Demo: Create ELB and 2 EC2 instances with Apache httpd, make one fail - see the other running
-* Lab 4: Create ELB and 2 EC2 instances with Apache httpd
+* Lab 3: Create ELB and 2 EC2 instances with Apache httpd
 
 ---
 
 
-## Module 6: S3
+## Module 5: S3
 
 * Buckets
 * HTTP access
 * IAM Roles
 * Versioning and multi-region
 * Demo: Upload an object to S3 bucket via web console
-* Lab 5: Server an HTML page from S3
+* Lab 4: Server an HTML page from S3
+
+---
+
+## Module 6: Auto Scaling
+
+* Alerts and CloudWatch
+* Demo: Create a launch config, auto scaling group and policy to increase instances
+* Demo: Create launch configuration, autoscaling group and see if it works
+* Lab 5: Deploy 2 Node apps under ELB, load test it to see if autoscaling works
 
 ---
 

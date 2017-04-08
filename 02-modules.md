@@ -585,74 +585,8 @@ Time:20 min
 
 ---
 
-# Module 4: Auto Scaling
 
----
-
-# CloudWatch
-
----
-
-![inline](images/CW-Overview.png)
-
----
-
-# CloudWatch Use Cases
-
-* Get alert when your bill exceeds $200/mo
-* Shutdown under used machines
-* Auto scale (up) machines under heavy load
-* Log API calls (CloudTail)
-* When EBS exceeds 100Mb throughput threshold
-
----
-
-# Alerts
-
-* Watch a single metric from 1,068 CloudWatch metrics available in the US West (N. California) region (as an example)
-* Send actions to SNS or Auto Scaling
-* Periods of 1min, 5min, 15min, etc.
-* You can create up to 5000 alarms per region per AWS account.
-
----
-
-# Alerts Types
-
-* ALARM: Data for the metric is outside the threshold
-* INSUFFICIENT_DATA: No data or not enough or too early
-* OK: Data for the metric is within the threshold
-
----
-
-# ❓ Questions? ❓
-
----
-
-# Demo 💻
-
-Create a launch configuration with 1 initial Node app, autoscaling group, policy to increase instances and see if autoscaling works
-
----
-
-# ❓ Questions? ❓
-
----
-
-# Lab 3: Pager Duty
-
-Task: Deploy 2 Node apps under ELB, load test it to see if autoscaling works
-
-Detailed instruction in labs/03-pager-duty.md
-
-Time to finish: 20 min
-
----
-
-# ❓ Questions? ❓
-
----
-
-## Module 6: Networking
+## Module 4: Networking
 
 ---
 
@@ -826,11 +760,11 @@ Create ELB and 2 EC2 instances with Apache httpd, make one fail - see the other 
 
 ---
 
-# Lab 4: ELB for Saving!
+# Lab 3: ELB for Save!
 
 Task: Create an app ELB with 2 targets which are Apache httpd servers in different AZs, make one fail and observe
 
-Detailed instruction in labs/lab-04.md
+Detailed instruction in labs/03-elb.md
 
 Time to finish: 15 min
 
@@ -840,7 +774,7 @@ Time to finish: 15 min
 
 ---
 
-## Module 7: S3
+## Module 5: S3
 
 ---
 
@@ -870,7 +804,7 @@ Upload an object to S3 bucket via web console
 
 ---
 
-# Lab 5: Static Websites Rule!
+# Lab 4: Static Websites Rule!
 
 Task: Server an HTML page from S3
 
@@ -883,5 +817,73 @@ Time to finish: 10 min
 # ❓ Questions? ❓
 
 ---
+
+# Module 6: Auto Scaling
+
+---
+
+# CloudWatch
+
+---
+
+![inline](images/CW-Overview.png)
+
+---
+
+# CloudWatch Use Cases
+
+* Get alert when your bill exceeds $200/mo
+* Shutdown under used machines
+* Auto scale (up) machines under heavy load
+* Log API calls (CloudTail)
+* When EBS exceeds 100Mb throughput threshold
+
+---
+
+# Alerts
+
+* Watch a single metric from 1,068 CloudWatch metrics available in the US West (N. California) region (as an example)
+* Send actions to SNS or Auto Scaling
+* Periods of 1min, 5min, 15min, etc.
+* You can create up to 5000 alarms per region per AWS account.
+
+---
+
+# Alerts Types
+
+* ALARM: Data for the metric is outside the threshold
+* INSUFFICIENT_DATA: No data or not enough or too early
+* OK: Data for the metric is within the threshold
+
+---
+
+# ❓ Questions? ❓
+
+---
+
+# Demo 💻
+
+Create a launch configuration with 1 initial Node app, autoscaling group, policy to increase instances and see if autoscaling works
+
+---
+
+# ❓ Questions? ❓
+
+---
+
+# Lab 5: Pager Duty
+
+Task: Deploy 2 Node apps under ELB, load test it to see if autoscaling works
+
+Detailed instruction in labs/03-pager-duty.md
+
+Time to finish: 20 min
+
+---
+
+# ❓ Questions? ❓
+
+---
+
 
 # End of Modules 👏

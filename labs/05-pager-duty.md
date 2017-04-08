@@ -1,20 +1,5 @@
 # Lab 3: Pager Duty
 
-1. Create a launch configuration with 1 Node app with user data to start an HTTP server (config from lab 2)
-1. Create an autoscaling group
-1. Create an autoscaling policy to increase instances by 1 when CPU load is > 15% for 1 min
-1. Load test it with loadtest npm module to see a new instance is created
-1. Remove autoscaling group
-1. Terminate instances
-
-
-```
-npm i -g loadtest
-loadtest -c 100 -rps {PUBLIC_URL}
-```
-
-https://aws.amazon.com/documentation/cloudwatch/
-
 
 In startups and medium-size companies it's not uncommon for software engineers to serve pager duty. That's partially because there's very little dedicated IT Ops resources and partially because pager duty might make engineers to be more responsible and *feel* the pain of their bugs.
 
@@ -25,9 +10,20 @@ Luckily, since your tech stack is built on AWS, you can take advantage of the au
 * Create an autoscaling group and launch an instance
 * Have autoscaling group launch an instance when CPU load is > 15% for 1 min on the instance in the launch group.
 
+
 # Walk-through
 
+1. Create a launch configuration with 1 Node app with user data to start an HTTP server (config from lab 2, user data has modified Node Hello Wolrd app)
+1. Create an autoscaling group
+1. Create an autoscaling policy to increase instances by 1 when CPU load is > 15% for 1 min
+1. Load test it with loadtest npm module to see a new instance is created
+1. Remove autoscaling group
+1. Terminate instances
+
+
 If you would like to attempt the task, go skip the walk-through and for the task directly. However, if you need a little bit more hand holding or you would like to look up some of the commands or code or settings, then follow the walk-through.
+
+
 
 ## 1. Create an EC2 Launch Configuration for One Instance
 
@@ -188,7 +184,7 @@ loadtest -c 100 --rps 200 http://ec2-54-183-255-49.us-west-1.compute.amazonaws.c
 
 Keep in mind that because the port is 80, there's no need to specify it in the URL (like we did with 3000 in the previous lab). 80 is the default port for HTTP.
 
-In the command above `-c` means concurrency and `--rps` means requests per second for each client. 100 and 200 should give enough troubles to t2.micro instance to ramp up the CPU load to hit the 15% threshold. This in turn will trigger the alarm to increase instance count by one. Wait for 1 min (make sure you alert period is 1 min). Go to EC2 console and check for the new instance create by the auto group. Adjust rps and concurrency as needed if the alarm hasn't been triggered. 
+In the command above `-c` means concurrency and `--rps` means requests per second for each client. 100 and 200 should give enough troubles to t2.micro instance to ramp up the CPU load to hit the 15% threshold. This in turn will trigger the alarm to increase instance count by one. Wait for 1 min (make sure you alert period is 1 min). Go to EC2 console and check for the new instance create by the auto group. Adjust rps and concurrency as needed if the alarm hasn't been triggered.
 
 If you used ELB (2.a.) then CPU load will decrease and decrease alert might be triggered with time.  If you didn't implement ELB, then simple stop stress testing and observed the removal of one instance so the total count is back to one.
 
@@ -214,5 +210,3 @@ ec2-user  2681  0.0  0.2 110460  2188 pts/0    S+   03:52   0:00 grep --color=au
 ```
 
 Also, check security group to see if port 80 is open for HTTP.
-	
-
