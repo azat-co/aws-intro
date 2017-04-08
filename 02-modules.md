@@ -804,11 +804,11 @@ Upload an object to S3 bucket via web console
 
 ---
 
-# Lab 4: Static Websites Rule!
+# Lab 4: Static Website Rule!
 
 Task: Server an HTML page from S3
 
-Detailed instruction in labs/lab-05.md
+Detailed instruction in labs/04-static-rules.md
 
 Time to finish: 10 min
 

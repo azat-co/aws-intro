@@ -22,7 +22,7 @@ If you would like to attempt the task, go skip the walk-through and for the task
 1. Test that you can see the page by going to the ELB's public DNS (not IP!)
 1. Stop one of the instances and see if you can still see the webpage
 
-## 1. Create 2 instances
+## 1. Create two instances
 
 Because we will be using instances which don't have public IP they won't be able to fetch yum update and source code from the internet. We can just create an instance *with* a public IP first, verify that the web server is running, and then create an image of that. This is a very realistic scenario because in real life you'll be working with images to save time on launching new instances (it's faster to create an instance from an image which has app and environment than use User Data to re-create environment anew). See [this](http://serverfault.com/questions/600987/allowing-a-private-subnet-ec2-access-to-the-internet-amazon-aws) and [this](http://serverfault.com/questions/628559/ec2-instances-in-vpc-and-access-to-the-internet) for more info.
 
