@@ -80,6 +80,22 @@ On the step 5: Security Groups Add have *at the very least* these protocols and 
 
 Review everything and select **Create launch configuration**.
 
+If you are curious, here's the code for the slow Node Hello World server. I intentionally put a for loot there to consume extra CPU cycles. 😈
+
+```js
+const port = 80
+require('http')
+  .createServer((req, res) => {
+    console.log('url:', req.url)
+    console.log('now we will slow down and block and consume CPU...')
+    for (var i=0; i< 1000000; i++) {}
+    res.end('hello world')
+  })
+  .listen(port, (error)=>{
+    console.log(`server is running on ${port}`)
+  })
+```
+
 Note: Don't forget to select an existing key pair for which you have the private key saved or create a new key pair and *download* the private key.
 
 ## 2. Create autoscaling group
@@ -126,8 +142,23 @@ Alternatively, execute curl from your developer machine to see the HTML response
 curl PUBLIC_URL
 ```
 
-## 2.a. Create App Load Balancer and Add Target Group
+## 2.a. Create App Load Balancer and Add Target Group (Optional - Lab 4 is on ELB)
 
+The next lab will be all about ELB, but if you are already familiar with ELB, then implement app ELB, add target group and attache it to the autoscaling group.
+
+First, create an app ELB (not classic) from the EC2 console. Select public and IPv4 and proper listeners to open port 80 (at least). Then, pick a name for the new target group as shown below.
+
+![](../images/elb-1.png)
+
+On the next step, register the instances launched by your autoscaling group (use ID if you have more than one instance running). See sceenshot as an example—your IDs and names *can and probably will* vary:
+
+![](../images/elb-2.png)
+
+Lastly, associate this target group (ELB) with your autoscaling group by editing your autoscaling group and adding the target group by name (there would be an auto complete drop down). Ignore the field "Load balancers". That's for the classic ELB and we are using app ELB. See an example below:
+
+![](../images/autogroup-elb.png)
+
+Again. This step is optional because we are really working an an autoscaling group but typically developers use ELB with autoscaling feature so that's why there's this step 2.a. but it's optional. We will do another lab just on ELB soon.
 
 ## 3. Stress Test Web server
 
@@ -149,15 +180,26 @@ The run the stress test with this command (my LB URL is my-httpd-lb-1208730027.u
 loadtest -c 100 --rps 200 http://my-httpd-lb-1208730027.us-west-1.elb.amazonaws.com
 ```
 
-In the command above `-c` means concurrency and `--rps` means requests per second for each client. 100 and 200 should give enough troubles to t2.micro instance to ramp up the CPU load to hit the 15% threshold. This in turn will trigger the alarm to increase instance count by one. Wait for 1 min (make sure you alert period is 1 min). Go to EC2 console and check the new instance.
+Or if you don't use ELB, the command will look something like this
 
-Now you need to test if the Node servers will be run on the startup coming from a stop or reboot. Go to web console and stop the instance.
+```
+loadtest -c 100 --rps 200 http://ec2-54-183-255-49.us-west-1.compute.amazonaws.com
+```
 
-Wait a few moment and see that Hello World is inaccessible from the public URL plus port number.
+Keep in mind that because the port is 80, there's no need to specify it in the URL (like we did with 3000 in the previous lab). 80 is the default port for HTTP.
 
-Start the same instance again and copy the new public URL. Add port 3000 and navigate to the address. Make sure you can see Hello World again.
+In the command above `-c` means concurrency and `--rps` means requests per second for each client. 100 and 200 should give enough troubles to t2.micro instance to ramp up the CPU load to hit the 15% threshold. This in turn will trigger the alarm to increase instance count by one. Wait for 1 min (make sure you alert period is 1 min). Go to EC2 console and check for the new instance create by the auto group. Adjust rps and concurrency as needed if the alarm hasn't been triggered. 
 
-More over, SSH to the EC2 instance and find the node process by
+If you used ELB (2.a.) then CPU load will decrease and decrease alert might be triggered with time.  If you didn't implement ELB, then simple stop stress testing and observed the removal of one instance so the total count is back to one.
+
+To avoid extra charges or running out of the trial compute time, terminate the autoscaling group first, thin EBL and target groups (if you implemented them) and then instances. If you terminate instances first, autoscaling group will spawn new instances to get to the desired size.
+
+
+# Troubleshooting
+
+**No new instances**: If you need to edit an alert because you noticed a mistake (maybe you forgot to select 1 min instead of 15min), you can still edit the alert but you'll need to open a new tab and navigate to the AWS CloudWatch | Alerts. Find that alert by the name and edit it there, then come back and review.
+
+**No Hello World**: SSH to the EC2 instance and find the node process by
 
 ```
 ps aux | grep node
@@ -171,16 +213,6 @@ root      2668  1.8  2.6 909804 27416 ?        Sl   03:52   0:00 node /home/ec2-
 ec2-user  2681  0.0  0.2 110460  2188 pts/0    S+   03:52   0:00 grep --color=auto node
 ```
 
-Terminate it with `kill -9 {PROCESS_ID}`, for example:
+Also, check security group to see if port 80 is open for HTTP.
+	
 
-```
-sudo kill -9 2668
-```
-
-Go to the web service and verify that you still see the message. That's because pm2 restarted the app. If you run `ps` again, then you'll see a different process ID.
-
-You enabled restart not only on the instance reboot but also on the process failure which could happen due to memory leaks, bugs or attacks.
-
-# Troubleshooting
-
-If you need to edit an alert because you noticed a mistake (maybe you forgot to select 1 min instead of 15min), you can still edit the alert but you'll need to open a new tab and navigate to the AWS CloudWatch | Alerts. Find that alert by the name and edit it there, then come back and review.
