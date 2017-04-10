@@ -16,15 +16,15 @@ Azat Mardan @azat_co
 # Meet Your Instructor
 
 * Name: Azat Mardan
-* Author 14 books and over 12 online courses, taught over 500 engineers in-person and over 25,000 online (Udemy and Node University)
-* Work as Capital One Technology Fellow (modeled after IBM and Google Fellows)
+* Author of 14 books and over 12 online courses, taught over 500 engineers in-person and over 25,000 online (Udemy and Node University)
+* Works as Capital One Technology Fellow (modeled after IBM and Google Fellows)
 
 ---
 
 # Meet Your Instructor (cont)
 
 * Master of Science in Information Systems Technology from University of Northern Virginia (2007)
-* Working on my second Master's degree, this time in Software Engineering and from Harvard University
+* Working on my second Master's degree, this time in Software Engineering and in Harvard University
 * Twitter: @azat_co, Online: <http://azat.co>
 
 ---
@@ -35,16 +35,16 @@ Azat Mardan @azat_co
 
 * Gizmo: small startup, used Rackspace
 * Storify: small startup, used Joyent and AWS
-* DocuSign: not used cloud 😞
+* DocuSign: didn't use cloud 😞
 * Capital One: cloud everywhere
 
 ---
 
 # Introduce your self by raising hand ✋
 
-* How many year in technology, 1, 2, 4, 8, 16?
-* Your main language, Java, Python, Ruby, C, JavaScript, COBOL?
-* What is your expectation so you are 100% satisfied by this course at 5pm?
+* How many years in technology: 1, 2, 4, 8, or 16?
+* Your main language: Java, Python, Ruby, C, JavaScript, or COBOL?
+* What are your expectations so that you are 100% satisfied by this course at 5pm?
 
 ---
 
@@ -60,8 +60,8 @@ Multitasking does NOT work [^1]
 
 * Lectures, demos and hands-on labs - you'll download them soon
 * Lunch break 12-1pm and 2 smaller breaks before and after
-* Fill out sign up sheets and DI evaluation *before* you leave (put in the envelope)
-* Slides are often just talking points because reading from slides is boring so pay attention and take notes!
+* Fill out the sign up sheets and DI evaluation *before* you leave (put in the envelope)
+* Slides are often just talking points because reading from the slides is boring so pay attention and take notes!
 * Labs have detailed step by step walk-through
 
 ---
@@ -155,8 +155,8 @@ Multitasking does NOT work [^1]
 
 * Alerts and CloudWatch
 * Demo: Create a launch config, auto scaling group and policy to increase instances
-* Demo: Create launch configuration, autoscaling group and see if it works
-* Lab 5: Deploy 2 Node apps under ELB, load test it to see if autoscaling works
+* Demo: Create a launch configuration and an autoscaling group, and see if it works
+* Lab 5: Deploy 2 Node apps under ELB, then load test it to see if autoscaling works
 
 ---
 
