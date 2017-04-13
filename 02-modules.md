@@ -137,7 +137,7 @@ I develop natively on my dev machine, but you can use another EC2 instance
 
 ---
 
-# Questions?
+# ❓ Questions? ❓
 
 ---
 
@@ -280,7 +280,8 @@ All types: <https://aws.amazon.com/ec2/instance-types>
 |--- |--- |
 |us-east-1|US East (N. Virginia)|
 |us-east-2|US East (Ohio)|
-|**us-west-1**|**US West (N. California)** 👈 *USE THIS FOR LABS*|
+|**us-west-1**|**US West (N. 
+)** 👈 *USE THIS FOR LABS*|
 |us-west-2|US West (Oregon)|
 |ca-central-1|Canada (Central)|
 |eu-west-1|EU (Ireland)|
@@ -477,7 +478,7 @@ require('http')
 #!/bin/bash -ex
 exec > >(tee /var/log/user-data.log|logger -t user-data -s 2>/dev/console) 2>&1
 curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
-yum -y install nodejs
+yum -y install node.js
 npm i -g pm2@2.4.3
 echo "const port = 3000
 ...
@@ -589,7 +590,7 @@ Time:20 min
 
 ---
 
-## Problem: EC2 Instances are publicly accessible... but most of the time you don't need it... what to do?
+## Problem: EC2 Instances are publicly accessible... but most of the time you don't need them... what to do?
 
 ---
 
@@ -617,7 +618,7 @@ VPC is a virtual network which is logically isolated from other virtual networks
 
 ![left 90%](images/vpc-diagram.png)
 
-* Spans all AZ in region
+* Spans all AZ in the region
 * Connect to corporate or home networks
 * Create subnets which are limited to an AZ
 
@@ -663,7 +664,7 @@ An elastic network interface (or network interface or just interface) is a virtu
 # Benefits
 
 * Monitors health
-* Routes to multiple AZs (fault toulerance)
+* Routes to multiple AZs (fault tolerance)
 * Sticky sessions (cookies)
 * CloudWatch metrics
 * More [here](http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/what-is-load-balancing.html#elb-features)
@@ -673,9 +674,9 @@ An elastic network interface (or network interface or just interface) is a virtu
 
 # Classic Load Balancer	vs. Application Load Balancer
 
-Classic Load Balancer — register **instances** with the load balancer.
+Classic Load Balancer — registers **instances** with the load balancer.
 
-Application Load Balancer — register the instances as **targets in a target group**, and route traffic to a target group.
+Application Load Balancer — registers the instances as **targets in a target group**, and routes traffic to a target group.
 
 ---
 
@@ -707,12 +708,12 @@ Note: *Internet-facing and internal load balancers route requests to your instan
 
 # How ELB Works: Two Points of Elasticity
 
-1. Client look ups DNS (azat.co) which by CNAME resolves to xxxx.us-west-1.elb.amazonaws.com
+1. Client looks up DNS (azat.co) which by CNAME resolves to xxxx.us-west-1.elb.amazonaws.com
 1. AWS gives ELB's IP - point 1
 1. Client connects to ELB's IP
 1. ELB passes traffic to one of the instances - point 2
 
-^It's important to use DNS for your ELB not IP because IP of ELB can change and you want to have 2 points of elasticity. Number 2 is easy to implement but number 1 is harder. https://shlomoswidler.com/2009/07/elastic-in-elastic-load-balancing-elb.html and http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html
+^It's important to use DNS for your ELB not IP because IP of ELB can change and you want to have 2 points of elasticity. Number 2 is easy to implement while number 1 is harder. https://shlomoswidler.com/2009/07/elastic-in-elastic-load-balancing-elb.html and http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html
 
 ---
 
@@ -731,8 +732,8 @@ Note: *Internet-facing and internal load balancers route requests to your instan
 # EIP
 
 * Limited to 5 per account per region
-* When associate instance with EIP, it loses it's previous public IP (if it had one)
-* Elastic IP address remains allocated until explicitly released
+* When we associate instance with EIP, it loses its previous public IP (if it had one)
+* Elastic IP address remains allocated until it is explicitly released
 
 ---
 
@@ -831,24 +832,24 @@ Time to finish: 10 min
 
 # CloudWatch Use Cases
 
-* Get alert when your bill exceeds $200/mo
-* Shutdown under used machines
+* Get an alert when your bill exceeds $200/mo
+* Shutdown underused machines
 * Auto scale (up) machines under heavy load
 * Log API calls (CloudTail)
-* When EBS exceeds 100Mb throughput threshold
+* When EBS exceeds 100Mb through, put threshold
 
 ---
 
 # Alerts
 
-* Watch a single metric from 1,068 CloudWatch metrics available in the US West (N. California) region (as an example)
+* Watch a single metric from 1,068 CloudWatch metrics available in the US West (N. California), as an example
 * Send actions to SNS or Auto Scaling
 * Periods of 1min, 5min, 15min, etc.
 * You can create up to 5000 alarms per region per AWS account.
 
 ---
 
-# Alerts Types
+# Alert Types
 
 * ALARM: Data for the metric is outside the threshold
 * INSUFFICIENT_DATA: No data or not enough or too early
@@ -862,7 +863,7 @@ Time to finish: 10 min
 
 # Demo 💻
 
-Create a launch configuration with 1 initial Node app, autoscaling group, policy to increase instances and see if autoscaling works
+Create a launch configuration with 1 initial Node app, autoscaling group, and a policy to increase instances, and then see if autoscaling works
 
 ---
 
@@ -872,7 +873,7 @@ Create a launch configuration with 1 initial Node app, autoscaling group, policy
 
 # Lab 5: Pager Duty
 
-Task: Deploy 2 Node apps under ELB, load test it to see if autoscaling works
+Task: Deploy 2 Node apps under ELB, then load test it to see if autoscaling works
 
 Detailed instruction in labs/03-pager-duty.md
 
