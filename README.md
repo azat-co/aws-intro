@@ -2,9 +2,9 @@
 
 ## Description
 
-Have you heard about big companies using cloud computing to a great success? For example Netflix, Capital One and Airbnb are some of the biggest AWS customers and it allows the companies to deliver faster and at scale. If you are a tech person (software engineer) but *totally* new to AWS — the biggest and most advanced cloud provider, this course is for you.
+Have you heard about big companies using cloud computing to a great success? For example Netflix, Capital One and Airbnb are some of the biggest AWS customers and it allows these companies to deliver faster and at scale. If you are a tech person (software engineer) but *totally* new to AWS — the biggest and most advanced cloud provider — this course is for you.
 
-This is Amazon Web Services Introduction course which teaches developers the main concepts of AWS. The course gives overview of the main services (EC2, S3, ELB, EIP, CloudWatch), how to launch compute instances, create images, connect and debug, automate environment creation and work with storage among many other things. The course is hands-on with five labs. AWS account is required or limited access login will be provided for the duration of the class.
+This is Amazon Web Services Introduction course which teaches developers the main concepts of AWS. The course gives overview of the main services (EC2, S3, ELB, EIP, and CloudWatch): how to launch compute instances, create images, connect and debug, automate environment creation, and work with storage among many other things. The course is hands-on with five labs. An AWS account is required or limited access login will be provided for the duration of the class.
 
 Pre-requisites: AWS account (free tier is fine); laptop with POSIX, terminal and editor or PuTTY if you're on Windows.
 
