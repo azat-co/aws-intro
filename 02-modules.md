@@ -3,9 +3,8 @@ slidenumbers: true
 theme: Merriweather, 8
 build-lists: true
 
-
 # AWS Intro
-##
+## Build solid foundation of main AWS concepts and services
 
 ![inline 100%](images/azat.jpeg)
 Azat Mardan @azat_co

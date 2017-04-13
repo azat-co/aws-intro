@@ -50,9 +50,9 @@ Azat Mardan @azat_co
 
 # Turn off your IMs, Slack, Hipchat, email, phones... seriously
 
-Multitasking does NOT work [^1]
+Multitasking does NOT work (for work which requires focus)[^1]
 
-[^1]: TK
+[^1]: https://blog.codinghorror.com/the-multi-tasking-myth, http://amzn.to/2ojSBzx and http://amzn.to/2oTZSDU
 
 ---
 
@@ -160,8 +160,9 @@ Multitasking does NOT work [^1]
 
 ---
 
-## Summary
+## Outro
 
+* Summary
 * AWS Events
 * AWS Certifications
 * AWS Books
