@@ -280,8 +280,7 @@ All types: <https://aws.amazon.com/ec2/instance-types>
 |--- |--- |
 |us-east-1|US East (N. Virginia)|
 |us-east-2|US East (Ohio)|
-|**us-west-1**|**US West (N. 
-)** 👈 *USE THIS FOR LABS*|
+|**us-west-1**|**US West (N. California)** 👈 *USE THIS FOR LABS*|
 |us-west-2|US West (Oregon)|
 |ca-central-1|Canada (Central)|
 |eu-west-1|EU (Ireland)|
@@ -674,9 +673,9 @@ An elastic network interface (or network interface or just interface) is a virtu
 
 # Classic Load Balancer	vs. Application Load Balancer
 
-Classic Load Balancer — registers **instances** with the load balancer.
+Classic Load Balancer — devs register **instances** with the load balancer.
 
-Application Load Balancer — registers the instances as **targets in a target group**, and routes traffic to a target group.
+Application Load Balancer — devs register the instances as **targets in a target group**, and routes traffic to a target group.
 
 ---
 
@@ -806,7 +805,7 @@ Upload an object to S3 bucket via web console
 
 # Lab 4: Static Website Rule!
 
-Task: Server an HTML page from S3
+Task: Serve an HTML page from S3
 
 Detailed instruction in labs/04-static-rules.md
 

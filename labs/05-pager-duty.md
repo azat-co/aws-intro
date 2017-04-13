@@ -1,4 +1,4 @@
-# Lab 3: Pager Duty
+# Lab 5: Pager Duty
 
 
 In startups and medium-size companies it's not uncommon for software engineers to serve pager duty. That's partially because there's very little dedicated IT Ops resources and partially because pager duty might make engineers to be more responsible and *feel* the pain of their bugs.
