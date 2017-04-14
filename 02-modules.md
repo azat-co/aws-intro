@@ -321,7 +321,7 @@ All types: <https://aws.amazon.com/ec2/instance-types>
 
 Task: Create an instance with WordPress, make the website visible in the browser *publicly*
 
-Detailed instruction in labs/lab-01.md
+Detailed instruction in labs/01-wordpress.md
 
 Time to finish: 10 min
 
@@ -359,7 +359,7 @@ Note: There are many other solutions for environment and app built, test and dep
 
 ---
 
-## Demo: User Data for Apache httpd and HTML page
+## Example: User Data for Apache httpd and HTML page
 
 ```bash
 #!/bin/bash
@@ -370,7 +370,7 @@ echo "Hello World!" > /var/www/index.html
 
 ---
 
-## Demo: User Data for Apache httpd, PHP and PHP code
+## Example: User Data for Apache httpd, PHP and PHP code
 
 ```bash
 #!/bin/bash
@@ -392,8 +392,8 @@ echo "<?php echo 'Hello World!' ?>" > /var/www/html/index.php
 
 ## Testing Apache httpd, PHP and Hello World
 
-<http://PUBLIC_URL/> or <http://PUBLIC_URL/index.php>
-<http://PUBLIC_URL/phpinfo.php>
+<http://PUBLIC_URL/html/index.php> and
+<http://PUBLIC_URL/html/phpinfo.php>
 
 Note: Never leave phpinfo in production because attackers can use the system info against the system!
 
@@ -466,6 +466,9 @@ require('http')
   })
 ```
 
+```
+node hello-world-server.js
+```
 
 ---
 
@@ -482,6 +485,8 @@ npm i -g pm2@2.4.3
 echo "const port = 3000
 ...
 " >> /home/ec2-user/hello-world-server.js
+pm2 start /home/ec2-user/hello-world-server.js \
+  -i 0 --name \"node-app\""
 ```
 
 ---
@@ -573,7 +578,7 @@ Note: *You can also use SSH (private key on EC2 and public on GitHub)*
 
 Task: Launch an instance with "Hello World" HTTP server (Node.js), make the website visible in the browser *publicly*. Do not SSH!
 
-Detailed instructions in labs/lab-02.md, Node server code is in code/index.js
+Detailed instructions in labs/02-hello-world.md, Node server code is in code/index.js
 
 Time:20 min
 
@@ -761,7 +766,7 @@ Create ELB and 2 EC2 instances with Apache httpd, make one fail - see the other 
 
 # Lab 3: ELB for Save!
 
-Task: Create an app ELB with 2 targets which are Apache httpd servers in different AZs, make one fail and observe
+Task: Create an app ELB with 2 targets which are Apache httpd servers in different AZs (private-from image), make one fail and observe
 
 Detailed instruction in labs/03-elb.md
 
@@ -874,7 +879,7 @@ Create a launch configuration with 1 initial Node app, autoscaling group, and a 
 
 Task: Deploy 2 Node apps under ELB, then load test it to see if autoscaling works
 
-Detailed instruction in labs/03-pager-duty.md
+Detailed instruction in labs/05-pager-duty.md
 
 Time to finish: 20 min
 

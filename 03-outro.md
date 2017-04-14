@@ -3,7 +3,7 @@ slidenumbers: true
 theme: Merriweather, 8
 build-lists: true
 
-# AWS Intermediate
+# AWS Intro
 ## Summary and Outro
 
 ![inline 100%](images/azat.jpeg)
@@ -68,9 +68,6 @@ Azat Mardan @azat_co
 ## [The Everything Store: Jeff Bezos and the Age of Amazon ](http://amzn.to/2nhx4YI)
 
 ---
-
-
-
 
 # AWS Events
 

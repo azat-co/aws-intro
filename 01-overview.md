@@ -21,6 +21,10 @@ Azat Mardan @azat_co
 
 ---
 
+![fit](images/azats-books-covers.png)
+
+---
+
 # Meet Your Instructor (cont)
 
 * Master of Science in Information Systems Technology from University of Northern Virginia (2007)

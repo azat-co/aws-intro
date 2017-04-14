@@ -14,7 +14,7 @@ If you would like to attempt the task, go skip the walk-through and for the task
 
 ## 1. Create an EC2 Instance
 
-Log in to the web console and navigate to the EC2 dashboard. Select "Launch instance" to start the wizard. On the first screen of the instance wizard, find in Marketplace and select the image which has free WordPress installation already built in. We recommend using *"Amazon Linux 64-bit, HVM, SSD, EBS"* because it's eligible for free tier on t2.micro.
+Log in to the web console and navigate to the EC2 dashboard. Select "Launch instance" to start the wizard. On the first screen of the instance wizard, find in Quick Start an Amazon Linux. We recommend using *"Amazon Linux 64-bit, HVM, SSD, EBS"* because it's eligible for free tier on t2.micro.
 
 On the next screen *Choose an instance type*, select "t2.micro" (Free tier eligible).
 

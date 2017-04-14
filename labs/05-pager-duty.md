@@ -33,7 +33,7 @@ Log in to the web console (use us-west-1 N California region) and navigate to th
 
 The Launch Configuration wizard is *very* similar to the Launch instance wizard. You will need to specify image(s), instance(s) type(s), volume(s), etc.
 
-On the first screen of the instance wizard, find in Marketplace and select the image which has free WordPress installation already built in. We recommend using *"Amazon Linux 64-bit, HVM, SSD, EBS"* because it's eligible for free tier on **t2.micro**.
+On the first screen of the instance wizard, find in Quick Start Amazon Linux. We recommend using *"Amazon Linux 64-bit, HVM, SSD, EBS"* because it's eligible for free tier on **t2.micro**.
 
 ![](../images/user-data-ec2-config.png)
 
