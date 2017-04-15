@@ -1,12 +1,12 @@
 # Lab 2: Hello World Baby
 
-Node is a fast performing non-blocking I/O JavaScript run-time platform which is mostly used for web servers, API and microservices because of it's small footprint, and interpreted nature. Node allows developers to port and share the front-end code *to the server* easily.
+Node is a fast performing non-blocking I/O JavaScript run-time platform which is mostly used for web servers, API and microservices because of its small footprint, and interpreted nature. Node allows developers to port and share the front-end code *to the server* easily.
 
 You can compare Apache httpd and PHP stack or Tomcat and Java to Node when doing this simple Hello World deployment.
 
 # Task
 
-* Have Hello World HTTP web server written in Node working and accessible to entire world via public AWS DNS.
+* Have Hello World HTTP web server written in Node working and accessible to the entire world via public AWS DNS.
 
 # Walk-through
 
@@ -14,7 +14,7 @@ If you would like to attempt the task, go skip the walk-through and for the task
 
 ## 1. Create an EC2 Instance
 
-Log in to the web console and navigate to the EC2 dashboard. Select "Launch instance" to start the wizard. On the first screen of the instance wizard, find in Marketplace and select the image which has free WordPress installation already built in. We recommend using *"Amazon Linux 64-bit, HVM, SSD, EBS"* because it's eligible for free tier on t2.micro.
+Log in to the web console and navigate to the EC2 dashboard. Select "Launch instance" to start the wizard. On the first screen of the instance wizard, find the Marketplace and select the image which has a free WordPress installation already built in. We recommend using *"Amazon Linux 64-bit, HVM, SSD, EBS"* because it's eligible for free tier on t2.micro.
 
 On the next screen *Choose an instance type*, select "t2.micro" (Free tier eligible).
 
@@ -22,7 +22,7 @@ Next, open Advanced settings as shown on the screen capture below
 
 ![](../images/user-data-ec2-config.png)
 
-Paste the following code for bash command into User Data. For bonus, change the Hello World to Hello {YOUR_NAME}. You'll need to create your own gist or write the source code in the User Data or load from some where else. (The second line is better logs because there's a delay in web console and cloud-init-output has too much. Below is the description of what the script does.)
+Paste the following code for bash command into User Data. For bonus, change the Hello World to Hello {YOUR_NAME}. You'll need to create your own gist or write the source code in the User Data or load from somewhere else. (The second line is a better log because there's a delay in web console and cloud-init-output has too much. Below is the description of what the script does.)
 
 
 ```bash
@@ -51,16 +51,16 @@ crontab -l | { cat; echo "@reboot pm2 start /home/ec2-user/hello-world-server.js
 
 Alternatively, you can use etc/rc.local, etc/init.d/rc.local, systemd, init.d, upstart, systemv, sysv or any other mechanism to ensure restart on the reboot and stop-start.
 
-To test that the restarting work, you might add the reboot command (good for testing but not needed):
+To test that the restarting works, you may add the reboot command (good for testing but not needed):
 
 ```
 sudo reboot
 ```
 
-Add either one of the restarting commands (crontab or any other) code to your User Data script.
+Add any one of the restarting commands (crontab or any other) code to your User Data script.
 
 
-The script above does many things. Here are they:
+The script above does many things. Here they are:
 
 1. Install nvm (Node version manager)
 2. Configure nvm to run with the "nvm" command
@@ -71,7 +71,7 @@ The script above does many things. Here are they:
 1. Configure pm2 to start Node servers on the instance startup (for stop->start or for reboots)
 
 
-Leave screens 3 and 4 with default settings. Add tag named role with value "aws-course" on screen 5. Configure security group to have these ports open:
+Leave screens 3 and 4 with the default settings. Add tag named role with value "aws-course" on screen 5. Configure security group to have these ports open:
 
 * HTTP 80
 * HTTPS 443
@@ -92,11 +92,11 @@ curl PUBLIC_URL:3000
 
 Now you need to test if the Node servers will be run on the startup coming from a stop or reboot. Go to web console and stop the instance.
 
-Wait a few moment and see that Hello World is inaccessible from the public URL plus port number.
+Wait for a moment and see that Hello World is inaccessible from the public URL plus port number.
 
 Start the same instance again and copy the new public URL. Add port 3000 and navigate to the address. Make sure you can see Hello World again.
 
-More over, SSH to the EC2 instance and find the node process by
+Moreover, SSH to the EC2 instance and find the node process by
 
 ```
 ps aux | grep node
@@ -123,7 +123,7 @@ You enabled restart not only on the instance reboot but also on the process fail
 
 ---
 
-Developers can also use nvm to install Node (and add the paths to the user profile for Amazon Linux - ec2-user; for Ubuntu, it's ubuntu). This is advantageous because you can run multiple versions of Node as the same time.
+Developers can also use nvm to install Node (and add the paths to the user profile for Amazon Linux - ec2-user; for Ubuntu, it's ubuntu). This is advantageous because you can run multiple versions of Node at the same time.
 
 ```
 #!/bin/bash
