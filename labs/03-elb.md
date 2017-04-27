@@ -80,7 +80,7 @@ Log in into your AWS web console and navigate to the EC2 management console. In 
 
 The process of ELB creation is very straightforward. The first question is what type, and you select Application ELB (more features!!!). Then press "Continue" - blue button in the right bottom corner.
 
-Then, the next 5 screen will require some modification from defaults. If a field is not mentioned, leave it as default or empty.
+Then, the next five screens will require some modification from defaults. If a field is not mentioned, leave it as default or empty.
 
 On *1. Configure Load Balancer*, make sure to have the following:
 
