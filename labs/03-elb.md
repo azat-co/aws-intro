@@ -2,7 +2,7 @@
 
 One of the best practices of building highly available, robust and fail-tolerant systems is to build redundancy. And when it comes to web services, redundancy means more instances (general term nodes) which run the same code and pretty much stateless so there's no hick-ups for clients making requests to different nodes. The benefit is that if one node fails, you got another running.
 
-Also, let's say you are publishing service like Twitter or WordPress and one of the articles published on your website became viral. There are thousands requests per second. Also, let's assume you don't have any CDN caching. How to scale this your website? If you just using a single instance and its public IP (probably EIP) - not good. A better way is to use a load balancer. It will not just distribute the traffic but also check for status health which makes your system more fail-tolerant. You can also reload and push new versions with 0-reload time if you use an ELB and multiple instances.
+Also, let's say you are publishing services like Twitter or WordPress and one of the articles published on your website became viral, there are thousands of requests per second. Also, let's assume you don't have any CDN caching, how do you scale this to your website? If you are just using a single instance and its public IP (probably EIP) - not good. A better way is to use a load balancer. It will not just distribute the traffic but also check for status health which makes your system more fail-tolerant. You can also reload and push new versions with 0-reload time if you use an ELB and multiple instances.
 
 There are two categories of ELB: classic and app. Classic works directly with instances while app ELB works with target groups which allows for more flexibility. App ELB has more features like HTTP/2, multi-port (containers!) and path-routing which is great for microservices.
 
@@ -15,7 +15,7 @@ Create an app ELB with 2 targets which are Apache httpd servers in different AZs
 
 # Walk-through
 
-If you would like to attempt the task, go skip the walk-through and for the task directly. However, if you need a little bit more hand holding or you would like to look up some of the commands or code or settings, then follow the walk-through.
+If you would like to attempt the task, go skip the walk-through and go for the task directly. However, if you need a little bit more hand holding or you would like to look up some of the commands or code or settings, then follow the walk-through.
 
 1. Create 2 instances with Apache httpd and hello world HTML, register them with ELB - only private IP
 1. Create an app ELB with external (public) IP
@@ -24,7 +24,7 @@ If you would like to attempt the task, go skip the walk-through and for the task
 
 ## 1. Create two instances
 
-Because we will be using instances which don't have public IP they won't be able to fetch yum update and source code from the internet. We can just create an instance *with* a public IP first, verify that the web server is running, and then create an image of that. This is a very realistic scenario because in real life you'll be working with images to save time on launching new instances (it's faster to create an instance from an image which has app and environment than use User Data to re-create environment anew). See [this](http://serverfault.com/questions/600987/allowing-a-private-subnet-ec2-access-to-the-internet-amazon-aws) and [this](http://serverfault.com/questions/628559/ec2-instances-in-vpc-and-access-to-the-internet) for more info.
+Because we will be using instances which don't have public IPs, they won't be able to fetch yum update and source code from the internet. We can just create an instance *with* a public IP first, verify that the web server is running, and then create an image of that. This is a very realistic scenario because in real life you'll be working with images to save time on launching new instances (it's faster to create an instance from an image which has an app and environment than use User Data to re-create environment anew). See [this](http://serverfault.com/questions/600987/allowing-a-private-subnet-ec2-access-to-the-internet-amazon-aws) and [this](http://serverfault.com/questions/628559/ec2-instances-in-vpc-and-access-to-the-internet) for more info.
 
 First, create a public instance.
 
@@ -37,7 +37,7 @@ First, create a public instance.
 * Volume: default
 * Security group: open
 
-User Data which create an HTML page served by Apache httpd web server:
+User Data which creates an HTML page served by Apache httpd web server:
 
 ```sh
 #!/bin/bash -ex
@@ -53,7 +53,7 @@ echo "<html>
 </html>" > /var/www/html/index.html
 ```
 
-Once the image is create from your new public instance, the image will be available in My AMIs tab.
+Once the image is created from your new public instance, the image will be available in My AMIs tab.
 
 ![](../images/elb-my-image.png)
 
@@ -78,9 +78,9 @@ Log in into your AWS web console and navigate to the EC2 management console. In 
 
 ![](../images/ec2-elb.png)
 
-The process of ELB creation is very straightforward. The first question is what type and you select Application ELB (more features!!!). Then press "Continue" - blue button in the right bottom corner.
+The process of ELB creation is very straightforward. The first question is what type, and you select Application ELB (more features!!!). Then press "Continue" - blue button in the right bottom corner.
 
-Then next 5 screen will require some modification from defaults. If a field is not mentioned, leave it as default or empty.
+Then, the next 5 screen will require some modification from defaults. If a field is not mentioned, leave it as default or empty.
 
 On *1. Configure Load Balancer*, make sure to have the following:
 
@@ -109,9 +109,9 @@ You can verify all the settings again from the ELB console list view. The import
 
 ## 3. Test
 
-Copy the ELB's DNS name from the Description tab in the ELB list view's bottom drawer. Paste the address in the browser and press enter. You should see This is my cool HTML page (or whatever HTML you put on the instances).
+Copy the ELB's DNS name from the Description tab in the ELB list view's bottom drawer. Paste the address in the browser and press enter. You should see: This is my cool HTML page (or whatever HTML you put on the instances).
 
-You can also explore Listeners and Monitoring tabs. Listeners allow you to re-route to different targets group (you can have more than one target group with one IP) based on protocol, port and even path with is very useful (especially for microservices!).
+You can also explore Listeners and Monitoring tabs. Listeners allow you to re-route to different target groups (you can have more than one target group with one IP) based on protocol, port and even path with is very useful (especially for microservices!).
 
 ![](../images/elb-listener.png)
 
@@ -119,14 +119,14 @@ You can also explore Listeners and Monitoring tabs. Listeners allow you to re-ro
 
 Stop one of the instances... wait then check in the target group. It'll say that the stopped instance is unhealthy. What's good about app ELB is that it'll distribute the load cross-AZs.
 
-The webpage should be still visible in the browser on the same ELB's URL.
+The webpage should still be visible in the browser on the same ELB's URL.
 
-Terminate instances, remove image, target group and ELB.
+Terminate instances, remove image, target group, and ELB.
 
 
 # Troubleshooting
 
-*If your private instance is not healthy*, then you might want to see the logs. Unfortunately, logs from the web console are delayed. To log in to your instance which *does not have public IP* simply use another instance *with* a public IP. Two instances must be in the same VPC. Copy the private key to your public instance with scp where (azat-aws-course is my key name and I'm copying to the home folder of my remote machine):
+*If your private instance is not healthy*, then you might want to see the logs. Unfortunately, logs from the web console are delayed. To log in to your instance which *does not have a public IP* simply use another instance *with* a public IP. Two instances must be in the same VPC. Copy the private key to your public instance with scp where (azat-aws-course is my key name and I'm copying to the home folder of my remote machine):
 
 ```
 scp -i azat-aws-course.pem azat-aws-course.pem ec2-user@ec2-54-153-86-214.us-west-1.compute.amazonaws.com:~/
@@ -140,4 +140,4 @@ cd ~
 ssh -i "azat-aws-course.pem" ec2-user@ip-172-31-25-251
 ```
 
-Logs will be in /var/log. If you used the provided for this lab User Data, then /var/log/user-data.log, otherwise just /var/log/cloud-init-output.log.
+Logs will be in /var/log. If you used the provided lab User Data for this, then /var/log/user-data.log, otherwise just /var/log/cloud-init-output.log.
