@@ -67,7 +67,7 @@ The script above does many things. Here they are:
 3. Install Node version 6.7
 4. Create a source code file by using echo command
 5. Install pm2 (process manager)
-1. Launch pm2 with source code and optimal number of processes (vertical scaling to maximize CPU usage on this instance) - crontab or any other
+1. Launch pm2 with source code and an optimal number of processes (vertical scaling to maximize CPU usage on this instance) - crontab or any other
 1. Configure pm2 to start Node servers on the instance startup (for stop->start or for reboots)
 
 
