@@ -10,7 +10,7 @@ You can compare Apache httpd and PHP stack or Tomcat and Java to Node when doing
 
 # Walk-through
 
-If you would like to attempt the task, go skip the walk-through and for the task directly. However, if you need a little bit more hand holding or you would like to look up some of the commands or code or settings, then follow the walk-through.
+If you would like to attempt the task, then skip the walk-through and go for the task directly. However, if you need a little bit more hand holding or you would like to look up some of the commands or code or settings, then follow the walk-through.
 
 ## 1. Create an EC2 Instance
 
