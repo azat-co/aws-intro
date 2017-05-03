@@ -13,6 +13,10 @@ Luckily, since your tech stack is built on AWS, you can take advantage of the au
 
 # Walk-through
 
+If you would like to attempt the task, then skip the walk-through and go for the task directly. However, if you need a little bit more hand holding or you would like to look up some of the commands or code or settings, then follow the walk-through.
+
+This is a high-level overview of what you'll be doing:
+
 1. Create a launch configuration with 1 Node app with user data to start an HTTP server (config from lab 2, user data has modified Node Hello Wolrd app)
 1. Create an autoscaling group
 1. Create an autoscaling policy to increase instances by 1 when CPU load is > 15% for 1 min
@@ -20,10 +24,7 @@ Luckily, since your tech stack is built on AWS, you can take advantage of the au
 1. Remove autoscaling group
 1. Terminate instances
 
-
-If you would like to attempt the task, then skip the walk-through and go for the task directly. However, if you need a little bit more hand holding or you would like to look up some of the commands or code or settings, then follow the walk-through.
-
-
+Next are the details.
 
 ## 1. Create an EC2 Launch Configuration for One Instance
 
