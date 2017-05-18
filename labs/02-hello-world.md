@@ -22,7 +22,7 @@ Next, open Advanced settings as shown on the screen capture below
 
 ![](../images/user-data-ec2-config.png)
 
-Paste the following code for bash command into User Data. For bonus, change the Hello World to Hello {YOUR_NAME}. You'll need to create your own gist or write the source code in the User Data or load from somewhere else. (The second line is a better log because there's a delay in web console and cloud-init-output has too much. Below is the description of what the script does.)
+Paste the following code for bash command into User Data. For bonus, change the Hello World to Hello {YOUR_NAME}. You'll need to create your own gist or write the source code in the User Data or load from somewhere else. (The second line is a better log because there's a delay in web console and cloud-init-output has too much. Below is the description of what the script does.) **Becareful when copying from a PDF - there might be unnecessary line breaks.**
 
 
 ```bash
@@ -42,7 +42,7 @@ sudo chmod 755 /home/ec2-user/hello-world-server.js # optional
 pm2 start /home/ec2-user/hello-world-server.js -i 0 --name "node-app"
 ```
 
-It's good to restart the app when on reboot. This code uses crontab for restarting the app after rebooting the instance (or stopping and starting it).
+It's good to restart the app when on reboot. This code uses crontab for restarting the app after rebooting the instance (or stopping and starting it). You can add this code to User Data script above:
 
 ```bash
 # restart pm2 and thus node app on reboot
@@ -75,6 +75,7 @@ Leave screens 3 and 4 with the default settings. Add tag named role with value "
 
 * HTTP 80
 * HTTPS 443
+* TCP/IP 3000
 * SSH 22
 
 ## 2. Test website

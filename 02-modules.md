@@ -578,7 +578,7 @@ Note: *You can also use SSH (private key on EC2 and public on GitHub)*
 
 Task: Launch an instance with "Hello World" HTTP server (Node.js), make the website visible in the browser *publicly*. Do not SSH!
 
-Detailed instructions in labs/02-hello-world.md, Node server code is in code/index.js
+Detailed instructions in labs/02-hello-world.md, Node server code is in code/node-user-data.sh
 
 Time:20 min
 
