@@ -1,6 +1,6 @@
-footer: © NodeProgram.com, Node.University and Azat Mardan 2017
+footer: © Node.University 2017
 slidenumbers: true
-theme: Merriweather, 8
+theme: Simple, 1
 build-lists: true
 
 # AWS Intro
@@ -17,9 +17,26 @@ Azat Mardan @azat_co
 
 ---
 
-## Why cloud?
+## Why cloud ?
 
-Yell out loud the benefits! 🔊
+Any ideas what benefits cloud computing offers? ☁️
+
+---
+
+[.autoscale: true]
+
+* Elastic, scalable, flexible and operational agile
+* Disaster recovery
+* Automatic software updates
+* Capital-expenditure Free
+* Increased collaboration
+* Work from anywhere
+* Standard and expertise
+* Reduced time to market and competitiveness
+* Environmentally friendly
+* Easy to use
+* Benefits of mass economy of scale
+* Global delivery faster
 
 ---
 
@@ -27,25 +44,67 @@ Yell out loud the benefits! 🔊
 
 * IaaS
 * PaaS
+* BaaS
 * FaaS
 * SaaS
 
 ---
 
-# Main concepts: Regions and AZs
+# Main concepts
+
+---
+
+# Regions and availability zones
+
+![inline](images/aws-global-map.png)
+
+---
+
+# Instances
+
+---
+
+# Storage
+
+* Elastic Block Storage
+* Relational Database Service (RDS)
+* Simple Storage Service (S3)
+
+---
+
+# Web console
+
+---
+
+# Availability, durability and reliability
+
+---
+
+# Availability, durability and reliability examples
+
+Example: 6 min out of an hour is down: 90% availability, and less than hour reliability and durability is if the data is ever destroyed.
+
+S3: 99.999999999% durability and 99.99% availability
+
+---
+
+# SLAs
+
+S3: 99.99% availability <https://aws.amazon.com/s3/sla>
+EC2: 99.95% availability <https://aws.amazon.com/ec2/sla>
+RDS: 99.95% availability <https://aws.amazon.com/rds/sla>
+
+or AWS credits you
 
 ---
 
 # Main AWS Services
 
-* EC2
-* S3
-* Glacier
-* EBS
-* VPC
-* CloudWatch
-* Alerts
-* RDS
+* EC2, ELB and EBS
+* S3 and Glacier
+* RDS and DynamoDB
+* Virtual Private Cloud (VPC)
+* CloudWatch and Alerts
 
 ---
 
@@ -147,7 +206,9 @@ I develop natively on my dev machine, but you can use another EC2 instance
 * AWS account
 * Node and npm
 
-15 minutes to download and install
+Detailed instruction in labs/0-installs.md
+
+Time to finish: 15 minutes to download and install
 
 ---
 

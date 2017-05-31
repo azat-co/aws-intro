@@ -1,6 +1,6 @@
-footer: © NodeProgram.com, Node.University and Azat Mardan 2017
+footer: © Node.University 2017
 slidenumbers: true
-theme: Merriweather, 8
+theme: Simple, 1
 build-lists: true
 
 # AWS Intro
