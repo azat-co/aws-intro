@@ -398,7 +398,7 @@ Time to finish: 10 min
 
 ## User Data
 
-2nd step, advanced settings
+3rd step in EC2 launch instance wizard, in advanced settings
 
 ---
 
@@ -535,6 +535,7 @@ node hello-world-server.js
 
 # User Data Bash for Node app with pm2 (Amazon Linux Example)
 
+
 ---
 
 ```bash
@@ -641,7 +642,7 @@ Task: Launch an instance with "Hello World" HTTP server (Node.js), make the webs
 
 Detailed instructions in labs/02-hello-world.md, Node server code is in code/node-user-data.sh
 
-Time:20 min
+Time: 20 min
 
 
 ---

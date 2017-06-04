@@ -10,6 +10,10 @@ Did you know that roughly 80-90% of all the websites on the internet is powered 
 
 If you would like to attempt the task, go skip the walk-through and go for the task directly. However, if you need a little bit more hand holding or you would like to look up some of the commands or code or settings, then follow the walk-through.
 
+1. Create an EC2 Instance
+1. Test Website
+1. Add a Page (Bonus)
+
 ## 1. Create an EC2 Instance
 
 Log in to the web console and navigate to the EC2 dashboard. Select "Launch instance" to start the wizard. On the first screen of the instance wizard, find the Marketplace and select the image which has a free WordPress installation already built in. We recommend using *"WordPress powered by Bitnami"* because it's a free software image. Developers pay only for the AWS EC2 service.
@@ -20,13 +24,13 @@ On the next screen *Choose an instance type*, select "t2.micro" (Free tier eligi
 * HTTPS 443
 * SSH 22
 
-## 2. Test website
+## 2. Test Website
 
 Copy the public URL for the newly created EC2 instance. You'll see the default home page as shown below.
 
 ![](../images/wp-home.png)
 
-## 3. Add a page (Bonus)
+## 3. Add a Page (Bonus)
 
 Get password from the EC2 instance logs. It'll be generated and displayed in the logs upon launch. You should change the password after the first log in.
 

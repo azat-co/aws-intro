@@ -1,4 +1,4 @@
-# Lab 4: Static Website Rule!
+# Lab 4: Static Website Rules!
 
 There are a lot of complexities with hosting a website. For even a simple static (no database or anything dynamic requiring server-side programming - that is no backend), developers need to have an HTTP server and configure it. For example, Apache httpd or nginx. There are a lot of configurations and it's easy to miss something, exposing your site to attackers. Also, there might be 0 day exploits and security bugs in the HTTP servers and their related modules. Finally, you need to keep an eye on the instance (that would be EC2). Is it healthy? Enough CPU? Memory? Software is a liability, not an asset so you need to think about maintenance costs. Then comes the cost of running an instance (S3 is much cheaper than EC2).
 
