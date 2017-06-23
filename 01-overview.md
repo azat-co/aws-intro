@@ -3,6 +3,13 @@ slidenumbers: true
 theme: Simple, 1
 build-lists: true
 
+[.slidenumbers: false] 
+[.hide-footer]
+
+![fit](images/AWS-Intro.png)
+
+---
+
 # AWS Intro
 ## Overview
 
@@ -12,6 +19,7 @@ Azat Mardan @azat_co
 ![inline right](images/nu.png)
 
 ---
+
 
 # Meet Your Instructor
 

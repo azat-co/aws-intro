@@ -114,3 +114,12 @@ Azat Mardan @azat_co
 
 
 # The End 🔚🏁👏
+
+
+---
+
+# PS: Continue with AWS Intermediate
+
+![inline](images/AWS-intermediate.png)
+
+<https://node.university/p/aws-intermediate>
