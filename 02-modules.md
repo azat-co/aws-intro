@@ -4,7 +4,7 @@ theme: Simple, 1
 build-lists: true
 
 # AWS Intro
-## Build solid foundation of main AWS concepts and services
+## Build Solid Foundation of main AWS Concepts and Services
 
 ![inline 100%](images/azat.jpeg)
 Azat Mardan @azat_co
@@ -17,7 +17,7 @@ Azat Mardan @azat_co
 
 ---
 
-## Why cloud ?
+## Why Cloud ?
 
 Any ideas what benefits cloud computing offers? ☁️
 
@@ -40,7 +40,7 @@ Any ideas what benefits cloud computing offers? ☁️
 
 ---
 
-# Overview of cloud computing
+# Overview of Cloud Computing
 
 * IaaS
 * PaaS
@@ -50,21 +50,21 @@ Any ideas what benefits cloud computing offers? ☁️
 
 ---
 
-# Main concepts
+# Main AWS Concepts
 
 ---
 
-# Regions and availability zones
+# AWS Regions and Availability Zones
 
 ![inline](images/aws-global-map.png)
 
 ---
 
-# Instances
+# AWS EC2 Instances
 
 ---
 
-# Storage
+# AWS Storage
 
 * Elastic Block Storage
 * Relational Database Service (RDS)
@@ -72,15 +72,15 @@ Any ideas what benefits cloud computing offers? ☁️
 
 ---
 
-# Web console
+# Web Console
 
 ---
 
-# Availability, durability and reliability
+# Availability, Durability and Reliability
 
 ---
 
-# Availability, durability and reliability examples
+# Availability, Durability and Reliability Examples
 
 Example: 6 min out of an hour is down: 90% availability, and less than hour reliability and durability is if the data is ever destroyed.
 
@@ -88,7 +88,7 @@ S3: 99.999999999% durability and 99.99% availability
 
 ---
 
-# SLAs
+# AWS Availability and SLAs
 
 S3: 99.99% availability <https://aws.amazon.com/s3/sla>
 EC2: 99.95% availability <https://aws.amazon.com/ec2/sla>
@@ -108,7 +108,7 @@ or AWS credits you
 
 ---
 
-# More, much more other services
+# More, Many More Other AWS Services
 
 * AI
 * Big Data
@@ -126,7 +126,7 @@ or AWS credits you
 
 ---
 
-# Billing and calculator
+# Billing and Calculator
 
 * [SIMPLE MONTHLY CALCULATOR](https://calculator.s3.amazonaws.com/index.html)
 * [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing/on-demand)
@@ -135,7 +135,7 @@ or AWS credits you
 
 ---
 
-# Billing Management console
+# Billing Management Console
 
 ![inline](images/billing-console.png)
 
@@ -145,7 +145,7 @@ or AWS credits you
 
 ---
 
-## Slides&code
+## Slides&Code
 
 Repo: <https://github.com/azat-co/aws-intro>
 
@@ -163,7 +163,7 @@ curl  https://codeload.github.com/azat-co/aws-intro/zip/master | tar -xv
 
 ---
 
-## AWS account: Free tier
+## AWS Account: Free tier
 
 * Sign up for free tier with an email you have access to
 * Random verification (phone call or wait - ask me for access to my account)
@@ -173,7 +173,7 @@ curl  https://codeload.github.com/azat-co/aws-intro/zip/master | tar -xv
 
 ---
 
-## AWS account: Free tier (cont)
+## AWS Account: Free tier (Cont)
 
 Free tier: <https://aws.amazon.com/free>, examples:
 
@@ -227,7 +227,7 @@ Time to finish: 15 minutes to download and install
 
 ---
 
-# "Stopped" to "running"
+# "Stopped" to "Running"
 
 * Rounded to an hour for billing (no charges for "stopped")
 * A new private IPv4 address unless in VPC or IPv6
@@ -253,7 +253,7 @@ Time to finish: 15 minutes to download and install
 
 ---
 
-# Images (cont)
+# Images (Cont)
 
 * OS, e.g., Amazon Linux
 * HVM
@@ -323,7 +323,7 @@ All types: <https://aws.amazon.com/ec2/instance-types>
 
 ---
 
-# VPC, subnets and AZs
+# VPC, Subnets and AZs
 
 ^We will talk more about VPC and subnets in the next modules
 
@@ -356,7 +356,7 @@ All types: <https://aws.amazon.com/ec2/instance-types>
 
 ---
 
-# Stop vs terminate
+# Stop vs Terminate
 
 ---
 
@@ -420,7 +420,7 @@ Note: There are many other solutions for environment and app built, test and dep
 
 ---
 
-## Example: User Data for Apache httpd and HTML page
+## Example: User Data for Apache httpd and HTML Page
 
 ```bash
 #!/bin/bash
@@ -431,7 +431,7 @@ echo "Hello World!" > /var/www/index.html
 
 ---
 
-## Example: User Data for Apache httpd, PHP and PHP code
+## Example: User Data for Apache httpd, PHP and PHP Code
 
 ```bash
 #!/bin/bash
@@ -479,7 +479,7 @@ packages:
 
 ---
 
-## Cloud Init (cont)
+## Cloud Init (Cont)
 
 Same Apache httpd, PHP and phpinfo config in User Data but with cloud-init instead of bash:
 
@@ -499,7 +499,7 @@ runcmd:
 
 ---
 
-# Cloud Init (cont)
+# Cloud Init (Cont)
 
 For trouble shooting, cloud init logs are in `/var/log/cloud-init-output.log`.
 
@@ -636,7 +636,7 @@ Note: *You can also use SSH (private key on EC2 and public on GitHub)*
 
 ----
 
-## Lab 2: Hello world Baby
+## Lab 2: Hello World, Baby
 
 Task: Launch an instance with "Hello World" HTTP server (Node.js), make the website visible in the browser *publicly*. Do not SSH!
 
@@ -652,7 +652,7 @@ Time: 20 min
 ---
 
 
-## Module 4: Networking
+## Module 4: AWS Networking
 
 ---
 
@@ -723,11 +723,11 @@ An elastic network interface (or network interface or just interface) is a virtu
 
 ---
 
-# ELB
+# Elastic Load Balancer (ELB)
 
 ---
 
-# Benefits
+# Elastic Load Balancer (ELB) Benefits
 
 * Monitors health
 * Routes to multiple AZs (fault tolerance)
@@ -746,7 +746,7 @@ Application Load Balancer — devs register the instances as **targets in a targ
 
 ---
 
-# Application Load Balancer over Classic LB
+# Application Load Balancer (LB) over Classic LB
 
 * Cross-zone load balancing always enabled
 * Host-based routing and Path-based routing (microservices)
@@ -840,7 +840,7 @@ Time to finish: 15 min
 
 ---
 
-## Module 5: S3
+## Module 5: AWS Simple Storage Service (S3)
 
 ---
 
@@ -848,7 +848,7 @@ Time to finish: 15 min
 
 ---
 
-# HTTP access
+# HTTP Access
 
 ---
 
@@ -856,7 +856,7 @@ Time to finish: 15 min
 
 ---
 
-# Versioning and multi-region
+# Versioning and Multi-region
 
 ---
 
@@ -884,11 +884,11 @@ Time to finish: 10 min
 
 ---
 
-# Module 6: Auto Scaling
+# Module 6: AWS Auto Scaling
 
 ---
 
-# CloudWatch
+# AWS CloudWatch
 
 ---
 
