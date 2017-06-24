@@ -901,7 +901,7 @@ Time to finish: 10 min
 * Get an alert when your bill exceeds $200/mo
 * Shutdown underused machines
 * Auto scale (up) machines under heavy load
-* Log API calls (CloudTail)
+* Log API calls (CloudTrail)
 * When EBS exceeds 100Mb through, put threshold
 
 ---
