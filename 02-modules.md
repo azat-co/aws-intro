@@ -870,7 +870,7 @@ Upload an object to S3 bucket via web console
 
 ---
 
-# Lab 4: Static Website Rule!
+# Lab 4: Static Website Rules!
 
 Task: Serve an HTML page from S3
 
